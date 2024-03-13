@@ -14,7 +14,13 @@
 }
 
 .welcome-section b {
-    color: #00ff00;
+    color: #aaf;
+}
+
+.welcome-section .container {
+    color: white;
+    background-color: rgba(100, 100, 100, .2);
+    border-radius: 12px;
 }
 
 .arrow-down {
@@ -55,6 +61,10 @@
 .content-section form {
     position: relative;
     margin: 40px auto;
+}
+
+.content-section .errorDisplay {
+    display: none;
 }
 
 .content-section table {
@@ -101,7 +111,7 @@ input[type="text"] {
     background-color: #f0f0f0;
 }
 
-@media screen and (max-width: 1250px) {
+@media screen and (max-width: 1510px) {
     .content-section aside {
         float: none;
         max-width: 400px;

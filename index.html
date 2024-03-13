@@ -15,14 +15,14 @@
 <body>
 
     <div class="welcome-section">
-        <div class="container" style="color: white;">
+        <div class="container">
             <p class="h1">Welcome to <b>Alpha Vantage</b></p>
             <p>Alpha Vantage is a free API that can allow you to make requests and retrieve a wide set of financial
                 data.</p>
         </div>
         <a class="arrow-down" href="#content-section">
             <!-- Bootstrap Arrow Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#00ff00"
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#aaf"
                 class="bi bi-arrow-down-short" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
                     d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4" />
@@ -46,6 +46,10 @@
                 <tr>
                     <th>Symbol</th>
                     <td id="symbolField"></td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td id="priceField"></td>
                 </tr>
                 <tr>
                     <th>Latest trading day</th>
@@ -95,6 +99,9 @@
                     </div>
                 </div>
             </form>
+            <div class="alert alert-danger errorDisplay" role="alert">
+                There was an error in retrieving information from the database!
+              </div>
         </aside>        
     </div>
 
