@@ -62,6 +62,13 @@
     position: relative;
     margin: 40px auto;
 }
+.content-section .formControlTitle {
+    text-align: left;
+    float: left;
+    font-weight: 400;
+    font-size: 18pt;
+    margin-left: 5px;
+}
 
 .content-section .errorDisplay {
     display: none;

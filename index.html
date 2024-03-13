@@ -22,8 +22,8 @@
         </div>
         <a class="arrow-down" href="#content-section">
             <!-- Bootstrap Arrow Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#aaf"
-                class="bi bi-arrow-down-short" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#aaf" class="bi bi-arrow-down-short"
+                viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
                     d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4" />
             </svg>
@@ -32,10 +32,10 @@
 
     <div class="content-section" id="content-section">
         <p class="h1">
-            Fancy display heading
-            <small class="text-muted">With faded secondary text</small>
+            Get global quotes
+            <small class="text-muted">or search for a company</small>
         </p>
-        
+
         <table class="table table-dark table-bordered border-dark col-6">
             <thead>
             <tbody>
@@ -84,6 +84,7 @@
 
         <aside>
             <form>
+                <label for="listCompany" class="formControlTitle">Global quotes</label>
                 <select class="form-control form-select-lg" id="listCompany">
                     <option value="MSFT">Microsoft</option>
                     <option value="SNE">Sony</option>
@@ -93,6 +94,7 @@
                 </select>
             </form>
             <form>
+                <label for="txtAutocomplete" class="formControlTitle">Search company</label>
                 <div class="form-group autocomplete" style="width: 100%;">
                     <input type="text" class="form-control" id="txtAutocomplete" style="width: 100%;">
                     <div class="autocomplete-items" id="autocomplete-list" style="width: 100%;">
@@ -101,11 +103,24 @@
             </form>
             <div class="alert alert-danger errorDisplay" role="alert">
                 There was an error in retrieving information from the database!
-              </div>
-        </aside>        
+            </div>
+        </aside>
+    </div>
     </div>
 
-    </div>
+        <footer class="py-3 bg-dark">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Features</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Pricing</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-light">FAQs</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-light">About</a></li>
+            </ul>
+            <p class="text-center text-light">© Bernardi Samuele</p>
+        </footer>
+    
+    
+
 
     <!-- Bootstrap JS and jQuery (Optional) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
