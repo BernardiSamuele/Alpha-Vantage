@@ -24,6 +24,7 @@ function getSymbolAutocompletePrompts(text) {
     const _autocompleteList = document.getElementById("autocomplete-list")
     _autocompleteList.innerHTML = ""
     $.getJSON(url, (data) => {
+        console.log(data)
         data["bestMatches"].forEach(element => {
             const _div = document.createElement("div")
             _div.innerHTML = `<b>${element["2. name"]}</b> - ${element["1. symbol"]}`
