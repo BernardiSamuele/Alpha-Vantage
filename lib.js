@@ -17,7 +17,7 @@ function getGlobalQuotes(symbol) {
 }
 
 function getSymbolAutocompletePrompts(text) {
-    if (text == "") {
+    if (text.length < 2) {
         return
     }
     const url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${text}&apikey=${DEMO_API_KEY}`
