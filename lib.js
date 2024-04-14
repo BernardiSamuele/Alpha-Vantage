@@ -1,5 +1,6 @@
 let currentCompany = ""
 let chart
+let chartType = "bar"
 
 function getGlobalQuotes(symbol) {
     const url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${DEMO_API_KEY}`
@@ -45,7 +46,7 @@ function getSymbolAutocompletePrompts(text) {
 function getMonthlyData(year) {
     const url = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=IBM&apikey=demo"
     $.getJSON(url, (data) => {
-        $.getJSON("http://localhost:3000/chart", (chartOptions) => {
+        $.getJSON(`http://localhost:3000/${chartType}`, (chartOptions) => {
             const canvas = document.querySelector("canvas")
             const monthlyData = []
             const montlyLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -92,4 +93,42 @@ function loadDataInTable(globalQuoteData) {
     document.getElementById("latestTraringDayField").textContent = globalQuoteData["07. latest trading day"]
     document.getElementById("previousCloseField").textContent = globalQuoteData["08. previous close"]
     document.getElementById("changeField").textContent = globalQuoteData["09. change"]
+}
+
+function showMap(symbol, position){
+    const mapContainer = document.createElement("div")
+    mapContainer.style.width = "100%"
+    mapContainer.style.height = "400px"
+    const html = document.createElement("div")
+    let mapOptions = {
+        "center":position,
+		"zoom":16,
+		"mapTypeId":google.maps.MapTypeId.ROADMAP
+    }
+	const map = new google.maps.Map(mapContainer, mapOptions)
+    html.appendChild(mapContainer)
+    Swal.fire({
+        title: `Sede ${symbol}`,
+        html: mapContainer,
+        width: 800,
+        background: "#fff"
+    })
+}
+
+const MAPS_URL = "https://maps.googleapis.com/maps/api/js"
+function loadGoogleMaps() {
+	let promise = new Promise(function (resolve, reject) {
+		const script = document.createElement("script")
+		script.type = "application/javascript"
+		script.src = `${MAPS_URL}?v=3&key=${MAP_KEY}`
+		document.body.appendChild(script)
+		script.onerror = function (err) {
+			console.log("An error occoured during map API loading")
+			reject(err)
+		}
+		script.onload = function () {
+			resolve()
+		}
+	})
+	return promise
 }
