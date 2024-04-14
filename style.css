@@ -119,6 +119,13 @@ input[type="text"] {
     background-color: #f0f0f0;
 }
 
+#chart-section .chartContainer{
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 50px;
+    background-color: #fff;
+}
+
 @media screen and (max-width: 1510px) {
     .content-section aside {
         float: none;
@@ -134,3 +141,17 @@ input[type="text"] {
         margin: 0;
     }
 }
+/* 
+@media screen and (max-width: 1200px){
+    #chart-section .chartContainer{
+        width: 800px;
+        background-color: #fff;
+    }    
+}
+
+@media screen and (max-width: 800px){
+    #chart-section .chartContainer{
+        width: 400px;
+        background-color: #fff;
+    }    
+} */

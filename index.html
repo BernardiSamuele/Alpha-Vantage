@@ -8,9 +8,11 @@
     <title>Alpha Vantage</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" type="application/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.3.7/sweetalert2.all.min.js"></script>
     <script src="https://code.jquery.com/jquery-latest.js"></script>
     <script src="lib.js"></script>
+    <script src="script.js" type="application/javascript"></script>
 </head>
 
 <body>
@@ -107,20 +109,31 @@
             </div>
         </aside>
     </div>
+
+    <div class="content-section" id="chart-section">
+        <span>
+            <button style="display: inline-block;" type="button" class="btn btn-dark" id="buttonYear">Year</button>
+            <input style="display: inline-block;" type="text" class="form-control form-select-lg" id="inputYear">
+        </span>
+        </input>
+        <div class="chartContainer">
+            <canvas height="500"></canvas>
+        </div>
+        <button style="display: inline-block;" type="button" class="btn btn-dark" id="buttonLocation">Location</button>
     </div>
 
-        <footer class="py-3 bg-dark">
-            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-light">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-light">About</a></li>
-            </ul>
-            <p class="text-center text-light">© Bernardi Samuele</p>
-        </footer>
-    
-    
+    <footer class="py-3 bg-dark">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Features</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Pricing</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">About</a></li>
+        </ul>
+        <p class="text-center text-light">© Bernardi Samuele</p>
+    </footer>
+
+
 
 
     <!-- Bootstrap JS and jQuery (Optional) -->

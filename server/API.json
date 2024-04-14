@@ -1,0 +1,67 @@
+{
+    "chart": {
+        "type": "bar",
+        "data": {
+            "datasets": [
+                {
+                    "barPercentage": 0.5,
+                    "barThickness": 80,
+                    "maxBarThickness": 100,
+                    "minBarLength": 2,
+                    "backgroundColor": [
+                        "rgba(255, 87, 51, 0.2)",
+                        "rgba(255, 195, 0, 0.2)",
+                        "rgba(54, 162, 235, 0.2)",
+                        "rgba(75, 192, 192, 0.2)",
+                        "rgba(153, 102, 255, 0.2)",
+                        "rgba(255, 111, 97, 0.2)",
+                        "rgba(255, 215, 0, 0.2)",
+                        "rgba(154, 205, 50, 0.2)",
+                        "rgba(255, 99, 71, 0.2)",
+                        "rgba(70, 130, 180, 0.2)",
+                        "rgba(205, 92, 92, 0.2)",
+                        "rgba(32, 178, 170, 0.2)"
+                    ],
+                    "borderColor": [
+                        "rgba(255, 87, 51, 1)",
+                        "rgba(255, 195, 0, 1)",
+                        "rgba(54, 162, 235, 1)",
+                        "rgba(75, 192, 192, 1)",
+                        "rgba(153, 102, 255, 1)",
+                        "rgba(255, 111, 97, 1)",
+                        "rgba(255, 215, 0, 1)",
+                        "rgba(154, 205, 50, 1)",
+                        "rgba(255, 99, 71, 1)",
+                        "rgba(70, 130, 180, 1)",
+                        "rgba(205, 92, 92, 1)",
+                        "rgba(32, 178, 170, 1)"
+                    ]
+                }
+            ]
+        },
+        "options": {
+            "scales": {
+                "y": {
+                    "suggestedMax": 300,
+                    "suggestedMin": 0,
+                    "beginAtZero": true
+                }
+            },
+            "plugins": {
+                "title": {
+                    "display": true,
+                    "text": "Grafico anno ",
+                    "font": {
+                        "size": 18
+                    }
+                },
+                "legend": {
+                    "display": false
+                }
+            },
+            "responsive": true,
+            "aspectRatio": false,
+            "mantainAspectRatio": false
+        }
+    }
+}

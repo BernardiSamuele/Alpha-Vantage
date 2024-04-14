@@ -1,4 +1,5 @@
 let currentCompany = ""
+let chart
 
 function getGlobalQuotes(symbol) {
     const url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${DEMO_API_KEY}`
@@ -6,7 +7,7 @@ function getGlobalQuotes(symbol) {
         (data) => {
             console.log(data)
             console.log(url)
-            if(data["Global Quote"] == null){
+            if (data["Global Quote"] == null) {
                 document.querySelector(".errorDisplay").style.display = "block"
                 listCompany.selectedIndex = -1
                 return
@@ -37,6 +38,45 @@ function getSymbolAutocompletePrompts(text) {
                 document.getElementById("txtAutocomplete").value = this.company
                 document.getElementById("autocomplete-list").innerHTML = ""
             })
+        })
+    })
+}
+
+function getMonthlyData(year) {
+    const url = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=IBM&apikey=demo"
+    $.getJSON(url, (data) => {
+        $.getJSON("http://localhost:3000/chart", (chartOptions) => {
+            const canvas = document.querySelector("canvas")
+            const monthlyData = []
+            const montlyLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+            for (const key in data["Monthly Time Series"]) {
+                if (key.substring(0, 4) == year) {
+                    monthlyData.push(data["Monthly Time Series"][key]["4. close"])
+                }
+                else if (key.substring(0, 4) < year) {
+                    break
+                }
+            }
+            console.log(monthlyData)
+            if (monthlyData.length == 0) {
+                Swal.fire({
+                    title: "<b>Error! Couldn't find any data for the selected year.</b>",
+                    icon: "error",
+                    width: "400px",
+                    background: "#fff"
+                })
+                return
+            }
+            monthlyData.reverse()
+            chartOptions["data"]["datasets"][0]["data"] = monthlyData
+            chartOptions["data"]["labels"] = montlyLabels.slice(0, monthlyData.length)
+            chartOptions["options"]["plugins"]["title"]["text"] += year
+            chartOptions["data"]["datasets"][0]["barThickness"] = window.innerWidth / 18
+            console.log(chartOptions)
+            if (chart) {
+                chart.destroy()
+            }
+            chart = new Chart(canvas, chartOptions)
         })
     })
 }
