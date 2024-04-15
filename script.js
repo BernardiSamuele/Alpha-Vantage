@@ -16,7 +16,11 @@ window.onload = async () => {
     inputYear.value = new Date().getFullYear()
     const buttonYear = document.getElementById("buttonYear")
     buttonYear.addEventListener("click", () => {
-        getMonthlyData(inputYear.value)
+        let companySymbol = document.getElementById("symbolField").innerHTML
+        if(companySymbol == 0){
+            companySymbol = "MSFT"
+        }
+        getMonthlyData(companySymbol, inputYear.value)
     })
     const swapChartButton = document.getElementById("swapChart").addEventListener("click", ()=>{
         chartType = chartType === "line" ? "bar" : "line"
@@ -26,7 +30,7 @@ window.onload = async () => {
     const buttonLocation = document.getElementById("buttonLocation")
     buttonLocation.addEventListener("click", () => {
         const COMPANY_SYMBOL = document.getElementById("symbolField").innerHTML
-        const url = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${COMPANY_SYMBOL}&apikey=${API_KEY}`
+        const url = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${COMPANY_SYMBOL}&apikey=${DEMO_API_KEY}`
         $.getJSON(url, (data) => {
             geocoder.geocode({ address: data["Address"] }, (results, status) => {
                 if (status === google.maps.GeocoderStatus.OK) {

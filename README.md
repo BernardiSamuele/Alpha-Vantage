@@ -1,5 +1,5 @@
 # Alpha Advantage <small> by Samuele Bernardi </small>
-![plot](./img/icon.png)
+![plot](./readme/logo.png)
 ## Overview
 This project provides real time marketing data based on the company you want to search for.
 ## API

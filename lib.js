@@ -6,8 +6,6 @@ function getGlobalQuotes(symbol) {
     const url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${DEMO_API_KEY}`
     $.getJSON(url,
         (data) => {
-            console.log(data)
-            console.log(url)
             if (data["Global Quote"] == null) {
                 document.querySelector(".errorDisplay").style.display = "block"
                 listCompany.selectedIndex = -1
@@ -26,7 +24,6 @@ function getSymbolAutocompletePrompts(text) {
     const _autocompleteList = document.getElementById("autocomplete-list")
     _autocompleteList.innerHTML = ""
     $.getJSON(url, (data) => {
-        console.log(data)
         data["bestMatches"].forEach(element => {
             const _div = document.createElement("div")
             _div.innerHTML = `<b>${element["2. name"]}</b> - ${element["1. symbol"]}`
@@ -43,8 +40,8 @@ function getSymbolAutocompletePrompts(text) {
     })
 }
 
-function getMonthlyData(year) {
-    const url = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=IBM&apikey=demo"
+function getMonthlyData(companySymbol, year) {
+    const url = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${companySymbol}&apikey=${DEMO_API_KEY}`
     $.getJSON(url, (data) => {
         $.getJSON(`http://localhost:3000/${chartType}`, (chartOptions) => {
             const canvas = document.querySelector("canvas")
@@ -58,7 +55,6 @@ function getMonthlyData(year) {
                     break
                 }
             }
-            console.log(monthlyData)
             if (monthlyData.length == 0) {
                 Swal.fire({
                     title: "<b>Error! Couldn't find any data for the selected year.</b>",
@@ -73,7 +69,6 @@ function getMonthlyData(year) {
             chartOptions["data"]["labels"] = montlyLabels.slice(0, monthlyData.length)
             chartOptions["options"]["plugins"]["title"]["text"] += year
             chartOptions["data"]["datasets"][0]["barThickness"] = window.innerWidth / 18
-            console.log(chartOptions)
             if (chart) {
                 chart.destroy()
             }
