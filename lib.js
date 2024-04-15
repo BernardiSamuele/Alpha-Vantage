@@ -102,6 +102,10 @@ function showMap(symbol, position){
     }
 	const map = new google.maps.Map(mapContainer, mapOptions)
     html.appendChild(mapContainer)
+    const marker = new google.maps.Marker({
+        map,
+        position
+    })
     Swal.fire({
         title: `Sede ${symbol}`,
         html: mapContainer,

@@ -1,5 +1,5 @@
 const API_KEY = "3GFAI4VS0CGCGTJY"
-const DEMO_API_KEY = "demo"
+const DEMO_API_KEY = "3GFAI4VS0CGCGTJY"
 
 window.onload = async () => {
     await loadGoogleMaps()
