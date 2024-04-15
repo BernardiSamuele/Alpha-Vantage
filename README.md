@@ -10,5 +10,14 @@ This functionality allows you to type a bunch of letters and find all the compan
 You can type micros to find Microsoft Corporation
 
 ![plot](./readme/example.png)
+
+## Chart
+You can also see a visual representation of the company trend with a chart of the montlhy close value, year by year. You can choose between **line** and bar **chart**.
+
+This is made trought the [Chart.js tool](https://www.chartjs.org/).
+
+## Location
+This functionality allows you to see in a Google map the location of the headquarters of the selected company. This is made throught the [Google maps API](https://developers.google.com/maps?hl=en).
+
 ## People
 [@BernardiSamuele](https://github.com/bernardisamuele)
