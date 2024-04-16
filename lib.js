@@ -46,10 +46,12 @@ function getMonthlyData(companySymbol, year) {
         $.getJSON(`http://localhost:3000/${chartType}`, (chartOptions) => {
             const canvas = document.querySelector("canvas")
             const monthlyData = []
-            const montlyLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+            const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+            const montlyLabels = []
             for (const key in data["Monthly Time Series"]) {
-                if (key.substring(0, 4) == year) {
+                if (key.startsWith(year)) {
                     monthlyData.push(data["Monthly Time Series"][key]["4. close"])
+                    montlyLabels.push(labels[parseInt(key.split('-')[1]) - 1])
                 }
                 else if (key.substring(0, 4) < year) {
                     break
@@ -66,8 +68,8 @@ function getMonthlyData(companySymbol, year) {
             }
             monthlyData.reverse()
             chartOptions["data"]["datasets"][0]["data"] = monthlyData
-            chartOptions["data"]["labels"] = montlyLabels.slice(0, monthlyData.length)
-            chartOptions["options"]["plugins"]["title"]["text"] = `${companySymbol} ${chartOptions["options"]["plugins"]["title"]["text"]}${year}`
+            chartOptions["data"]["labels"] = montlyLabels.reverse()
+            chartOptions["options"]["plugins"]["title"]["text"] = `${companySymbol} ${chartOptions["options"]["plugins"]["title"]["text"]}${year} (close values)`
             chartOptions["data"]["datasets"][0]["barThickness"] = window.innerWidth / 18
             chartOptions["options"]["scales"]["y"]["suggestedMax"] = Math.max([...monthlyData])
             if (chart) {

@@ -93,7 +93,7 @@
             "plugins": {
                 "title": {
                     "display": true,
-                    "text": "Grafico anno ",
+                    "text": "Year ",
                     "font": {
                         "size": 18
                     }
