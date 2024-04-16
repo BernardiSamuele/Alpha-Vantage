@@ -67,8 +67,9 @@ function getMonthlyData(companySymbol, year) {
             monthlyData.reverse()
             chartOptions["data"]["datasets"][0]["data"] = monthlyData
             chartOptions["data"]["labels"] = montlyLabels.slice(0, monthlyData.length)
-            chartOptions["options"]["plugins"]["title"]["text"] += year
+            chartOptions["options"]["plugins"]["title"]["text"] = `${companySymbol} ${chartOptions["options"]["plugins"]["title"]["text"]}${year}`
             chartOptions["data"]["datasets"][0]["barThickness"] = window.innerWidth / 18
+            chartOptions["options"]["scales"]["y"]["suggestedMax"] = Math.max([...monthlyData])
             if (chart) {
                 chart.destroy()
             }
